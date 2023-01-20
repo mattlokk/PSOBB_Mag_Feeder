@@ -1,5 +1,7 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
-SetKeyDelay, 920, 80
+
+SendMode Event        ; REQUIRED!!!! PSOBB won't accept the deemed superior
+SetKeyDelay 150, 50   ; default added with v2 'SendInput', revert to old mode
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script
@@ -16,14 +18,16 @@ SetKeyDelay, 920, 80
 
 	; -------------------------------------------------
 	; ---------------Make Changes Here-----------------
+	; note that the count is the number of *feedings*
+	; so the number of items fed is count * 3
 
 	MAGS[1]:= {}
 	MAGS[1][1]:= { itemName: "monofluid", count: 427 }
-	;MAGS[1][2]:= { itemName: "difluid", count: 2 }
-	;MAGS[1][3]:= { itemName: "trifluid", count: 1 }
+	;MAGS[1][2]:= { itemName: "difluid", count: 50 }
+	;MAGS[1][3]:= { itemName: "trifluid", count: 70 }
 
-	MAGS[2]:= {}
-	MAGS[2][1]:= { itemName: "monomate", count: 26 }
+	;MAGS[2]:= {}
+	;MAGS[2][1]:= { itemName: "monomate", count: 100 } ; this would feed 300 monomates
 	;MAGS[2][2]:= { itemName: "dimate", count: 3 }
 	;MAGS[2][3]:= { itemName: "trimate", count: 3 }
 
@@ -98,7 +102,7 @@ SetKeyDelay, 920, 80
 	}
 	BuyItem(dir, steps){
 		Send {Enter}
-		Sleep 1000
+		Sleep 200
 		Send {Enter}
 		Loop %steps%{
 			if (dir = "down")
@@ -114,7 +118,7 @@ SetKeyDelay, 920, 80
 		Send {Backspace}
 		Send {Backspace}
 		Send {Backspace}
-		Sleep 1000
+		Sleep 200
 	}
 	Feed(index){
 		magpos:= index - 1
@@ -126,7 +130,7 @@ SetKeyDelay, 920, 80
 			Send {Enter}
 			Send {Enter}
 			Send {Enter}
-			Sleep 1000
+			Sleep 200
 			Send {F4}
 		}
 	}
