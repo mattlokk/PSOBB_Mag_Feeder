@@ -18,12 +18,12 @@ SetKeyDelay, 920, 80
 	; ---------------Make Changes Here-----------------
 
 	MAGS[1]:= {}
-	MAGS[1][1]:= { itemName: "monofluid", count: 427 } ; 128100 meseta
+	MAGS[1][1]:= { itemName: "monofluid", count: 427 }
 	;MAGS[1][2]:= { itemName: "difluid", count: 2 }
 	;MAGS[1][3]:= { itemName: "trifluid", count: 1 }
 
 	MAGS[2]:= {}
-	MAGS[2][1]:= { itemName: "monomate", count: 26 } ; 3900 meseta
+	MAGS[2][1]:= { itemName: "monomate", count: 26 }
 	;MAGS[2][2]:= { itemName: "dimate", count: 3 }
 	;MAGS[2][3]:= { itemName: "trimate", count: 3 }
 
@@ -31,23 +31,21 @@ SetKeyDelay, 920, 80
 	; -------------------------------------------------
 
 
-
 	While KEEPGOING{
 		i:= 1
-		isMagsLastFeed:= []
+		isDoneFeeding:= []
 		Loop % MAGS.Length(){
-			isMagsLastFeed[i]:= true
+			isDoneFeeding[i]:= true
 			j:= 1
 			previousItemCount:= 0
 			length:= MAGS[i].Length()
 			Loop % length{
 				count:=  MAGS[i][j]["count"]
-				if (FEEDCOUNT >= (previousItemCount + count)){
+				if (FEEDCOUNT >= (previousItemCount + count))
 					previousItemCount+= count
-				}
 				else{
 					Buy(MAGS[i][j]["itemName"])
-					isMagsLastFeed[i]:= false
+					isDoneFeeding[i]:= false
 					break
 				}
 				j++
@@ -55,20 +53,19 @@ SetKeyDelay, 920, 80
 			i++
 		}
 		if (FeedCount > 0){
-			waitTime:= lastFeedTime + 211000 - A_TickCount
+			waitTime:= lastFeedTime + 220000 - A_TickCount
 			Sleep % waitTime
 		}
 		lastFeedTime:= A_TickCount
-		isLastFeed:= true
+		isDone:= true
 		Loop % MAGS.Length(){
-			if !(isMagsLastFeed[A_Index]){
+			if !(isDoneFeeding[A_Index]){
 				Feed(A_Index)
-				isLastFeed:= false
+				isDone:= false
 			}
 		}
-		if (isLastFeed)
+		if (isDone)
 			KEEPGOING:= false
-
 		FEEDCOUNT+= 1
 	}
 	; all done!
