@@ -70,7 +70,8 @@ return
 		}
 		if (FEEDCOUNT > 0){
 			waitTime:= lastFeedTime + 2150000 - A_TickCount
-			Sleep % waitTime
+			if waitTime > 0
+				Sleep % waitTime
 		}
 		lastFeedTime:= A_TickCount
 		isDone:= true
