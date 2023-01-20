@@ -1,5 +1,6 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
-SetKeyDelay, 920, 80
+SendMode Event
+SetKeyDelay 150, 50
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script

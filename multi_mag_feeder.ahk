@@ -1,20 +1,32 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
 
-SendMode Event        ; REQUIRED!!!! PSOBB won't accept the deemed superior
-SetKeyDelay 150, 50   ; default added with v2 'SendInput', revert to old mode
+SendMode Event
+SetKeyDelay 200, 50
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script
 ^e::ExitApp	; Ctrl+E will exit the script
 
+^i::
+	WriteText("/bank")
+return
+
+; quick feed
+^u::
+	Feed(1)
+return
+
 ; Ctrl+J to start script
 ^j::
 	Sleep 500
-	FEEDCOUNT:= 0
+
+	FEEDCOUNT:= GetSavedData("FeedCount")
+	if FEEDCOUNT = ERROR
+		FEEDCOUNT:= 0
+
 	KEEPGOING:= true
 	lastFeedTime:= 0
 	MAGS:= {}
-
 
 	; -------------------------------------------------
 	; ---------------Make Changes Here-----------------
@@ -56,8 +68,8 @@ SetKeyDelay 150, 50   ; default added with v2 'SendInput', revert to old mode
 			}
 			i++
 		}
-		if (FeedCount > 0){
-			waitTime:= lastFeedTime + 220000 - A_TickCount
+		if (FEEDCOUNT > 0){
+			waitTime:= lastFeedTime + 2150000 - A_TickCount
 			Sleep % waitTime
 		}
 		lastFeedTime:= A_TickCount
@@ -71,67 +83,91 @@ SetKeyDelay 150, 50   ; default added with v2 'SendInput', revert to old mode
 		if (isDone)
 			KEEPGOING:= false
 		FEEDCOUNT+= 1
+		SaveData("feedCount", FEEDCOUNT)
+		message:= "Feeding #" FEEDCOUNT " complete"
+		WriteText(message)
 	}
 	; all done!
 	ExitApp
-	; --------------------------------------------
-	; functions below here
-	Buy(itemName){
-		if (itemName = "monomate")
-			BuyItem("down", 0)
-		else if (itemName = "dimate")
-			BuyItem("down", 1)
-		else if (itemName = "trimate")
-			BuyItem("down", 2)
-		else if (itemName = "monofluid")
-			BuyItem("down", 3)
-		else if (itemName = "difluid")
-			BuyItem("down", 4)
-		else if (itemName = "trifluid")
-			BuyItem("down", 5)
-		else if (itemName = "sol atomizer")
-			BuyItem("up", 7)
-		else if (itemName = "moon atomizer")
-			BuyItem("up", 6)
-		else if (itemName = "star atomizer")
-			BuyItem("up", 5)
-		else if (itemName = "antidote")
-			BuyItem("up", 4)
-		else if (itemName = "antiparalysis")
-			BuyItem("up", 3)
-	}
-	BuyItem(dir, steps){
-		Send {Enter}
-		Sleep 200
-		Send {Enter}
-		Loop %steps%{
-			if (dir = "down")
-				Send, {Down}
-			else
-				Send, {Up}
-		}
-		Send {Enter}
-		Send {Up}
-		Send {Up}
-		Send {Enter}
-		Send {Enter}
-		Send {Backspace}
-		Send {Backspace}
-		Send {Backspace}
-		Sleep 200
-	}
-	Feed(index){
-		magpos:= index - 1
-		Loop 3{
-			Send {F4}
-			Loop % magpos{
-				Send {Down}
-			}
-			Send {Enter}
-			Send {Enter}
-			Send {Enter}
-			Sleep 200
-			Send {F4}
-		}
-	}
 Return
+
+
+
+; --------------------------------------------
+; functions below here
+Buy(itemName){
+	if (itemName = "monomate")
+		BuyItem("down", 0)
+	else if (itemName = "dimate")
+		BuyItem("down", 1)
+	else if (itemName = "trimate")
+		BuyItem("down", 2)
+	else if (itemName = "monofluid")
+		BuyItem("down", 3)
+	else if (itemName = "difluid")
+		BuyItem("down", 4)
+	else if (itemName = "trifluid")
+		BuyItem("down", 5)
+	else if (itemName = "sol atomizer")
+		BuyItem("up", 7)
+	else if (itemName = "moon atomizer")
+		BuyItem("up", 6)
+	else if (itemName = "star atomizer")
+		BuyItem("up", 5)
+	else if (itemName = "antidote")
+		BuyItem("up", 4)
+	else if (itemName = "antiparalysis")
+		BuyItem("up", 3)
+}
+BuyItem(dir, steps){
+	Send {Enter}
+	Sleep 200
+	Send {Enter}
+	Loop %steps%{
+		if (dir = "down")
+			Send, {Down}
+		else
+			Send, {Up}
+	}
+	Send {Enter}
+	Send {Up}
+	Send {Up}
+	Send {Enter}
+	Send {Enter}
+	Send {Backspace}
+	Send {Backspace}
+	Send {Backspace}
+	Sleep 200
+}
+Feed(index){
+	magpos:= index - 1
+	Loop 3{
+		Send {F4}
+		Loop % magpos{
+			Send {Down}
+		}
+		Send {Enter}
+		Send {Enter}
+		Send {Enter}
+		Sleep 200
+		Send {F4}
+	}
+}
+GetSavedData(key){
+	IniRead, value, multi_mag_feeder.ini, Settings, %key%
+	return %value%
+}
+SaveData(key, value){
+	IniWrite, %value%, multi_mag_feeder.ini, Settings, %key%
+}
+WriteText(val){
+	Send {Space}
+	array:= StrSplit(val)
+	Loop % array.Length(){
+		char:= array[A_Index]
+		if (char = " ")
+			Send {Space}
+		else Send {%char%}
+	}
+	Send {Enter}
+}

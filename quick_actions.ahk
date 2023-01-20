@@ -1,12 +1,13 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
-SetKeyDelay, 100, 50
+SendMode Event
+SetKeyDelay 150, 50
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script
 ^e::ExitApp	; Ctrl+E will exit the script
 
 ; Ctrl+J to start script
-^j::
+^u::
 	Loop 3{
 		Send {F4}
 		Send {Enter}
@@ -16,7 +17,7 @@ SetKeyDelay, 100, 50
 	}
 return
 
-^k::
+^i::
 	Send {Space}
 	Send {/}
 	Send {b}
