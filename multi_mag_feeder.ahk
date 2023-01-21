@@ -69,7 +69,7 @@ return
 			i++
 		}
 		if (FEEDCOUNT > 0){
-			waitTime:= lastFeedTime + 2150000 - A_TickCount
+			waitTime:= lastFeedTime + (215 * 1000) - A_TickCount
 			if waitTime > 0
 				Sleep % waitTime
 		}
