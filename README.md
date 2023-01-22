@@ -1,10 +1,5 @@
 # PSOBB_Scripts
 
-**mag_feeder**
-
-Only supports a single mag, but does support more finite control over the number of items given.
-
-
 **multi_mag_feeder**
 
 ctrl-J to start the script
