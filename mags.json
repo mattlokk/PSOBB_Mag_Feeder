@@ -1,34 +1,20 @@
 [
   {
-    "feedCount": 8,
+    "name": "mag1",
+    "feedCount": 0,
     "items": [
-      {
-        "count": 100,
-        "name": "monofluid"
-      },
-      {
-        "count": 2,
-        "name": "difluid"
-      }
-    ],
-    "name": "mag1"
+      {"count": 10, "name": "monofluid"},
+      {"count": 20, "name": "difluid"},
+      {"count": 30, "name": "trifluid"}
+    ]
   },
   {
-    "feedCount": 6,
+    "name": "mag2",
+    "feedCount": 0,
     "items": [
-      {
-        "count": 3,
-        "name": "antidote"
-      },
-      {
-        "count": 2,
-        "name": "antiparalysis"
-      },
-      {
-        "count": 1,
-        "name": "sol atomizer"
-      }
-    ],
-    "name": "mag2"
+      {"count": 3, "name": "antidote"},
+      {"count": 2, "name": "antiparalysis"},
+      {"count": 1, "name": "sol atomizer"}
+    ]
   }
 ]
