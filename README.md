@@ -12,26 +12,26 @@ Only supports a single mag, but does support more finite control over the number
  - Saves your progress and resumes it if you stop and start the script
  - Supports configuring mag diets via json file eg:
 
-     [
-       {
-         "name": "mag1",
-         "feedCount": 0,
-         "items": [
-           {"count": 10, "name": "monofluid"},
-           {"count": 20, "name": "difluid"},
-           {"count": 30, "name": "trifluid"}
-              ]
-       },
-       {
-         "name": "mag2",
-         "feedCount": 0,
-         "items": [
-           {"count": 3, "name": "antidote"},
-           {"count": 2, "name": "antiparalysis"},
-           {"count": 1, "name": "sol atomizer"}
-         ]
-       }
-     ]
+	     [
+	       {
+		 "name": "mag1",
+		 "feedCount": 0,
+		 "items": [
+		   {"count": 10, "name": "monofluid"},
+		   {"count": 20, "name": "difluid"},
+		   {"count": 30, "name": "trifluid"}
+		      ]
+	       },
+	       {
+		 "name": "mag2",
+		 "feedCount": 0,
+		 "items": [
+		   {"count": 3, "name": "antidote"},
+		   {"count": 2, "name": "antiparalysis"},
+		   {"count": 1, "name": "sol atomizer"}
+		 ]
+	       }
+	     ]
 
  - Can only feed items in increments of 3. May change later
 
