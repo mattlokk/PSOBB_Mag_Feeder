@@ -7,6 +7,8 @@ Only supports a single mag, but does support more finite control over the number
 
 **multi_mag_feeder**
 
+ctrl-J to start the script
+ctrl-E to start the script
 
  - Supports *n* number of mags.
  - Saves your progress and resumes it if you stop and start the script
@@ -52,11 +54,6 @@ Only supports a single mag, but does support more finite control over the number
      ]
 ~~~
 
-
-
- - Can only feed items in increments of 3. May change later
-
-ctrl-J to start the script
 
 **quick_actions**
 
