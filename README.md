@@ -10,7 +10,7 @@ Only supports a single mag, but does support more finite control over the number
 
  - Supports *n* number of mags.
  - Saves your progress and resumes it if you stop and start the script
- - Supports configuring mag diets via json file eg:
+ - Supports configuring mag diets via json file
  	- name : Optional. May be used in the future for logging/output messages
  	- feedCount : Starts at 0. Increments every time the mag is fed. Used for keeping track of progress through the feed plan. 
  	- items : An array of items to feed the mag
@@ -18,26 +18,41 @@ Only supports a single mag, but does support more finite control over the number
 		- name : the name of the item to feed the mag 
 			- { "monomate", "dimate", "trimate", "monofluid", "difluid", "trifluid", "antidote", "antiparalysis", "sol atomizer", "moon atomizer", "star atomizer" }
 
-		[
-			{
-				"name": "mag1",
-				"feedCount": 0,
-				"items": [
-					{"count": 10, "name": "monofluid"},
-					{"count": 20, "name": "difluid"},
-					{"count": 30, "name": "trifluid"}
-				]
-			},
-			{
-				"name": "mag2",
-				"feedCount": 0,
-				"items": [
-					{"count": 3, "name": "antidote"},
-					{"count": 2, "name": "antiparalysis"},
-					{"count": 1, "name": "sol atomizer"}
-				]
-			}
-		]
+
+
+~~~
+     [
+       {
+	 "name": "mag1",
+	 "feedCount": 0,
+	 "items": [
+	   {"count": 10, "name": "monomate"},
+	   {"count": 20, "name": "dimate"},
+	   {"count": 30, "name": "trimate"}
+	 ]
+       },
+       {
+	 "name": "mag2",
+	 "feedCount": 0,
+	 "items": [
+	   {"count": 10, "name": "monofluid"},
+	   {"count": 20, "name": "difluid"},
+	   {"count": 30, "name": "trifluid"}
+	 ]
+       },
+       {
+	 "name": "mag3",
+	 "feedCount": 0,
+	 "items": [
+	   {"count": 3, "name": "antidote"},
+	   {"count": 2, "name": "antiparalysis"},
+	   {"count": 1, "name": "sol atomizer"}
+	 ]
+       }
+     ]
+~~~
+
+
 
  - Can only feed items in increments of 3. May change later
 
