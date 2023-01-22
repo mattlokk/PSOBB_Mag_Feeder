@@ -1,0 +1,34 @@
+[
+  {
+    "feedCount": 8,
+    "items": [
+      {
+        "count": 100,
+        "name": "monofluid"
+      },
+      {
+        "count": 2,
+        "name": "difluid"
+      }
+    ],
+    "name": "mag1"
+  },
+  {
+    "feedCount": 6,
+    "items": [
+      {
+        "count": 3,
+        "name": "antidote"
+      },
+      {
+        "count": 2,
+        "name": "antiparalysis"
+      },
+      {
+        "count": 1,
+        "name": "sol atomizer"
+      }
+    ],
+    "name": "mag2"
+  }
+]

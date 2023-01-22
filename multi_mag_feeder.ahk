@@ -1,101 +1,97 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
+#Include JSON.ahk
 
 SendMode Event
-SetKeyDelay 200, 50
+SetKeyDelay 440, 60
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script
 ^e::ExitApp	; Ctrl+E will exit the script
 
-^i::
-	WriteText("/bank")
-return
-
-; quick feed
-^u::
-	Feed(1)
-return
-
 ; Ctrl+J to start script
 ^j::
-	Sleep 500
+	debug:= true
 
-	FEEDCOUNT:= GetSavedData("FeedCount")
-	if FEEDCOUNT = ERROR
-		FEEDCOUNT:= 0
-
-	KEEPGOING:= true
-	lastFeedTime:= 0
-	MAGS:= {}
-
-	; -------------------------------------------------
-	; ---------------Make Changes Here-----------------
-	; note that the count is the number of *feedings*
-	; so the number of items fed is count * 3
-
-	MAGS[1]:= {}
-	MAGS[1][1]:= { itemName: "monofluid", count: 427 }
-	;MAGS[1][2]:= { itemName: "difluid", count: 50 }
-	;MAGS[1][3]:= { itemName: "trifluid", count: 70 }
-
-	;MAGS[2]:= {}
-	;MAGS[2][1]:= { itemName: "monomate", count: 100 } ; this would feed 300 monomates
-	;MAGS[2][2]:= { itemName: "dimate", count: 3 }
-	;MAGS[2][3]:= { itemName: "trimate", count: 3 }
-
-	; -------------------------------------------------
-	; -------------------------------------------------
-
-
-	While KEEPGOING{
-		i:= 1
+	Sleep 100
+	__Mags:= % LoadData()
+	lastFeedTime:= []
+	While true{
 		isDoneFeeding:= []
-		Loop % MAGS.Length(){
+		Loop % __Mags.Length(){
+			i:= A_Index
+			mag:= __Mags[i]
 			isDoneFeeding[i]:= true
-			j:= 1
 			previousItemCount:= 0
-			length:= MAGS[i].Length()
-			Loop % length{
-				count:=  MAGS[i][j]["count"]
-				if (FEEDCOUNT >= (previousItemCount + count))
-					previousItemCount+= count
+			Loop % mag.items.Length(){
+				item:=	mag.items[A_Index]
+				if (mag.feedCount >= (previousItemCount + item.count))
+					previousItemCount+= item.count
 				else{
-					Buy(MAGS[i][j]["itemName"])
 					isDoneFeeding[i]:= false
+					if (debug){
+						msg:= % "Buy " item.name
+						WriteText(msg)
+						hungerTime:= 10
+					}
+					else{
+						Buy(item.name)
+						hungerTime:= 215
+					}
+
+					waitTime:= lastFeedTime[i] + (hungerTime * 1000) - A_TickCount
+					if (waitTime > 0){
+						Sleep % waitTime
+					}
+					isFirstFeedOfSession[i]:= false
+					lastFeedTime[i]:= A_TickCount
+					mag.feedCount++
+					if (debug){
+						msg:= % "Feed " mag.name
+						WriteText(msg)
+					}
+					else
+						Feed(i)
 					break
 				}
 				j++
 			}
 			i++
 		}
-		if (FEEDCOUNT > 0){
-			waitTime:= lastFeedTime + (215 * 1000) - A_TickCount
-			if waitTime > 0
-				Sleep % waitTime
-		}
-		lastFeedTime:= A_TickCount
 		isDone:= true
-		Loop % MAGS.Length(){
-			if !(isDoneFeeding[A_Index]){
-				Feed(A_Index)
+		Loop % __Mags.Length(){
+			if (!isDoneFeeding[A_Index]){
 				isDone:= false
 			}
 		}
-		if (isDone)
-			KEEPGOING:= false
-		FEEDCOUNT+= 1
-		SaveData("feedCount", FEEDCOUNT)
-		message:= "Feeding #" FEEDCOUNT " complete"
-		WriteText(message)
+		if (isDone){
+			break
+		}
+		SaveData(__Mags)
+
+		sleep 500
 	}
+	WriteText("All done!")
 	; all done!
 	ExitApp
 Return
 
-
-
 ; --------------------------------------------
 ; functions below here
+
+
+LoadData(){
+	FileRead jsonString, mags.json
+	data := JSON.Load(jsonString)
+	Return data
+}
+SaveData(data){
+	FileDelete, mags.json
+	dataString:= JSON.Dump(data, ,2)
+	;dataString := StrReplace(dataString, ",", ",`r`n")
+
+
+	FileAppend, %dataString%, mags.json
+}
 Buy(itemName){
 	if (itemName = "monomate")
 		BuyItem("down", 0)
@@ -153,13 +149,6 @@ Feed(index){
 		Sleep 200
 		Send {F4}
 	}
-}
-GetSavedData(key){
-	IniRead, value, multi_mag_feeder.ini, Settings, %key%
-	return %value%
-}
-SaveData(key, value){
-	IniWrite, %value%, multi_mag_feeder.ini, Settings, %key%
 }
 WriteText(val){
 	Send {Space}
