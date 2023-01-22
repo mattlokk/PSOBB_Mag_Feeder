@@ -2,7 +2,7 @@
 
 **multi_mag_feeder**
 
-ctrl-J to start the script
+ctrl-J to start the script  
 ctrl-E to start the script
 
  - Supports *n* number of mags.
