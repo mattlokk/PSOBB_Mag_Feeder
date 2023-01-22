@@ -1,8 +1,7 @@
-#IfWinActive Ephinea: Phantasy Star Online Blue Burst
+;#IfWinActive Ephinea: Phantasy Star Online Blue Burst
 #Include JSON.ahk
 
 SendMode Event
-SetKeyDelay 440, 60
 
 ^p::pause	; Ctrl+P to pause the script
 ^r::Reload	; Ctrl+R to restart the script
@@ -10,9 +9,12 @@ SetKeyDelay 440, 60
 
 ; Ctrl+J to start script
 ^j::
-	debug:= true
-
-	Sleep 100
+	debug:= false
+	if (debug)
+		SetKeyDelay 40, 60
+	else
+		SetKeyDelay 440, 60
+	Sleep 200
 	__Mags:= % LoadData()
 	lastFeedTime:= []
 	While true{
@@ -37,7 +39,6 @@ SetKeyDelay 440, 60
 						Buy(item.name)
 						hungerTime:= 215
 					}
-
 					waitTime:= lastFeedTime[i] + (hungerTime * 1000) - A_TickCount
 					if (waitTime > 0){
 						Sleep % waitTime
@@ -63,12 +64,9 @@ SetKeyDelay 440, 60
 				isDone:= false
 			}
 		}
-		if (isDone){
+		if (isDone)
 			break
-		}
 		SaveData(__Mags)
-
-		sleep 500
 	}
 	WriteText("All done!")
 	; all done!
@@ -87,9 +85,6 @@ LoadData(){
 SaveData(data){
 	FileDelete, mags.json
 	dataString:= JSON.Dump(data, ,2)
-	;dataString := StrReplace(dataString, ",", ",`r`n")
-
-
 	FileAppend, %dataString%, mags.json
 }
 Buy(itemName){
