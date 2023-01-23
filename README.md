@@ -8,6 +8,7 @@
 - make changes to mags.json
 - run multi_mag_feeder.exe
 
+**usage**
 ctrl-J to start the script  
 ctrl-E to end the script
 
