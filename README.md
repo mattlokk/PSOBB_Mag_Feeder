@@ -1,6 +1,4 @@
-# PSOBB_Scripts
-
-**multi_mag_feeder**
+# PSOBB_Mag_Feeder**
 
 **installation**
 
