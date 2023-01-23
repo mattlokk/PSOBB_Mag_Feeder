@@ -5,9 +5,9 @@
 **installation**
 
 - download [latest release](https://github.com/mattlokk/PSOBB_Scripts/releases/tag/v0.1)
-- extract contents of .zip into a new folder
+- extract contents of .zip
 - make changes to mags.json
-- run multi_mag_feeder.exe
+- run psobb_mag_feeder.exe
 
 **usage**
 
