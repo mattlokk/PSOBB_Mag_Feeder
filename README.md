@@ -1,4 +1,4 @@
-# PSOBB_Mag_Feeder**
+# PSOBB_Mag_Feeder
 
 **installation**
 
