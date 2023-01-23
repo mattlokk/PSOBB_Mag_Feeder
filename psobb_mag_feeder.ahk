@@ -1,6 +1,7 @@
-;#IfWinActive Ephinea: Phantasy Star Online Blue Burst
+#IfWinActive Ephinea: Phantasy Star Online Blue Burst
 #Include JSON.ahk
 
+SetKeyDelay 440, 60
 SendMode Event
 
 ^p::pause	; Ctrl+P to pause the script
@@ -9,11 +10,6 @@ SendMode Event
 
 ; Ctrl+J to start script
 ^j::
-	debug:= false
-	if (debug)
-		SetKeyDelay 40, 60
-	else
-		SetKeyDelay 440, 60
 	Sleep 200
 	__Mags:= % LoadData()
 	lastFeedTime:= []
@@ -30,28 +26,15 @@ SendMode Event
 					previousItemCount+= item.count
 				else{
 					isDoneFeeding[i]:= false
-					if (debug){
-						msg:= % "Buy " item.name
-						WriteText(msg)
-						hungerTime:= 10
-					}
-					else{
-						Buy(item.name)
-						hungerTime:= 215
-					}
+					Buy(item.name)
+					hungerTime:= 220
 					waitTime:= lastFeedTime[i] + (hungerTime * 1000) - A_TickCount
-					if (waitTime > 0){
+					if (waitTime > 0)
 						Sleep % waitTime
-					}
 					isFirstFeedOfSession[i]:= false
 					lastFeedTime[i]:= A_TickCount
 					mag.feedCount++
-					if (debug){
-						msg:= % "Feed " mag.name
-						WriteText(msg)
-					}
-					else
-						Feed(i)
+					Feed(i)
 					break
 				}
 				j++
@@ -74,18 +57,38 @@ SendMode Event
 Return
 
 ; --------------------------------------------
-; functions below here
-
-
+; functions
 LoadData(){
 	FileRead jsonString, mags.json
 	data := JSON.Load(jsonString)
 	Return data
 }
-SaveData(data){
+SaveData(mags){
+	output:= "`[`n"
+	Loop % mags.Length(){
+		mag:= mags[A_Index]
+		output:= % output "  {`n"
+		output:= % output "    ""name"": """ mag.name """,`n"
+		output:= % output "    ""feedCount"": """ mag.feedCount """,`n"
+		output:= % output "    ""items"": [`n"
+		Loop % mag.items.Length(){
+			item:= mag.items[A_Index]
+			output:= % output "      `{""name"": """ item.name """, ""count"": """ item.count """`}"
+			if (A_Index < mag.items.Length())
+				output:= % output ","
+			output:= % output "`n"
+		}
+		output:= % output "    `]`n"
+		output:= % output "  `}"
+		if (A_Index < mags.Length())
+			output:= % output ","
+		output:= % output "`n"
+	}
+	output:= % output "`]"
+
 	FileDelete, mags.json
-	dataString:= JSON.Dump(data, ,2)
-	FileAppend, %dataString%, mags.json
+	;dataString:= JSON.Dump(data, ,2)
+	FileAppend, %output%, mags.json
 }
 Buy(itemName){
 	if (itemName = "monomate")
@@ -113,7 +116,7 @@ Buy(itemName){
 }
 BuyItem(dir, steps){
 	Send {Enter}
-	Sleep 200
+	Sleep 500
 	Send {Enter}
 	Loop %steps%{
 		if (dir = "down")
@@ -129,7 +132,7 @@ BuyItem(dir, steps){
 	Send {Backspace}
 	Send {Backspace}
 	Send {Backspace}
-	Sleep 200
+	Sleep 500
 }
 Feed(index){
 	magpos:= index - 1
