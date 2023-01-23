@@ -18,35 +18,26 @@ ctrl-E to end the script
 
 
 ~~~
-     [
-       {
-	 "name": "mag1",
-	 "feedCount": 0,
-	 "items": [
-	   {"count": 10, "name": "monomate"},
-	   {"count": 20, "name": "dimate"},
-	   {"count": 30, "name": "trimate"}
-	 ]
-       },
-       {
-	 "name": "mag2",
-	 "feedCount": 0,
-	 "items": [
-	   {"count": 10, "name": "monofluid"},
-	   {"count": 20, "name": "difluid"},
-	   {"count": 30, "name": "trifluid"}
-	 ]
-       },
-       {
-	 "name": "mag3",
-	 "feedCount": 0,
-	 "items": [
-	   {"count": 3, "name": "antidote"},
-	   {"count": 2, "name": "antiparalysis"},
-	   {"count": 1, "name": "sol atomizer"}
-	 ]
-       }
-     ]
+[
+  {
+    "name": "mag1",
+    "feedCount": "5",
+    "items": [
+      {"name": "monofluid", "count": "10"},
+      {"name": "difluid", "count": "20"},
+      {"name": "trifluid", "count": "30"}
+    ]
+  },
+  {
+    "name": "mag2",
+    "feedCount": "5",
+    "items": [
+      {"name": "antidote", "count": "3"},
+      {"name": "antiparalysis", "count": "2"},
+      {"name": "sol atomizer", "count": "1"}
+    ]
+  }
+]
 ~~~
 
 
