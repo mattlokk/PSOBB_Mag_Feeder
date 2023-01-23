@@ -11,9 +11,9 @@
 
 **usage**
 
-ctrl-J to start the script  
-ctrl-P to pause the script  
-ctrl-E to end the script
+ctrl-J to start feeding 
+ctrl-P to pause/unpause the script  
+ctrl-E to exit the application
  
  - Start with your inventory completely empty of items, and when your mag is hungry.
  - Recommend using [Magatama](https://www.pioneer2.net/community/threads/magatama-a-modern-mag-planner-calculator-beta-9.4552/) to plan your mag builds 
