@@ -11,7 +11,7 @@
 
 **usage**
 
-ctrl-J to start feeding 
+ctrl-J to start feeding  
 ctrl-P to pause/unpause the script  
 ctrl-E to exit the application
  
