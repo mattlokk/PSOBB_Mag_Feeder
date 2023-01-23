@@ -53,12 +53,3 @@ ctrl-E to end the script
 ]
 ~~~
 
-
-**quick_actions**
-
-ctrl-U : Does a very quick mag feed.
-	Feeds the first mag in your inventory the top item in your inventory 3x
-	Takes about 2 seconds total
-
-ctrl-I : Swaps between character/shared bank
-
