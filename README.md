@@ -13,7 +13,6 @@
 
 ctrl-J to start the script  
 ctrl-E to end the script
-ctrl-E to end the script
 
 ***warning*** - *Put any items in your inventory (armor, weapons, etc) that you don't want sold into the bank in case something goes wrong.*
  
