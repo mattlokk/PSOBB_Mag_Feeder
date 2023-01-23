@@ -21,7 +21,7 @@ ctrl-E to end the script
 [
   {
     "name": "mag1",
-    "feedCount": "5",
+    "feedCount": "0",
     "items": [
       {"name": "monofluid", "count": "10"},
       {"name": "difluid", "count": "20"},
@@ -30,7 +30,7 @@ ctrl-E to end the script
   },
   {
     "name": "mag2",
-    "feedCount": "5",
+    "feedCount": "0",
     "items": [
       {"name": "antidote", "count": "3"},
       {"name": "antiparalysis", "count": "2"},
