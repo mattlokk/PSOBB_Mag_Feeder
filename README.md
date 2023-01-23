@@ -3,7 +3,7 @@
 **multi_mag_feeder**
 
 ctrl-J to start the script  
-ctrl-E to start the script
+ctrl-E to end the script
 
  - Supports *n* number of mags.
  - Saves your progress and resumes it if you stop and start the script
