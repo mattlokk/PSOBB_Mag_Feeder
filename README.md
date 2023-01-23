@@ -13,6 +13,7 @@
 
 ctrl-J to start feeding  
 ctrl-P to pause/unpause the script  
+ctrl-R to restart the script  
 ctrl-E to exit the application
  
  - Start with your inventory completely empty of items, and when your mag is hungry.
