@@ -12,6 +12,7 @@
 **usage**
 
 ctrl-J to start the script  
+ctrl-P to pause the script  
 ctrl-E to end the script
  
  - Start with your inventory completely empty of items, and when your mag is hungry.
