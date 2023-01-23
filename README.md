@@ -15,8 +15,7 @@ ctrl-J to start the script
 ctrl-E to end the script
 ctrl-E to end the script
 
-	*warning*
- - *Put any items in your inventory (armor, weapons, etc) that you don't want sold into the bank in case something goes wrong.*
+***warning*** - *Put any items in your inventory (armor, weapons, etc) that you don't want sold into the bank in case something goes wrong.*
  
  - Start with your inventory completely empty of items, and when your mag is hungry.
  - Recommend using [Magatama](https://www.pioneer2.net/community/threads/magatama-a-modern-mag-planner-calculator-beta-9.4552/) to plan your mag builds 
