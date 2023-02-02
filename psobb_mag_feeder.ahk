@@ -1,7 +1,6 @@
 #IfWinActive Ephinea: Phantasy Star Online Blue Burst
 #Include JSON.ahk
 
-SetKeyDelay 440, 60
 SendMode Event
 
 ^p::pause	; Ctrl+P to pause the script
@@ -10,6 +9,11 @@ SendMode Event
 
 ; Ctrl+J to start script
 ^j::
+	debug:= false
+	if (debug)
+		SetKeyDelay 40, 60
+	else
+		SetKeyDelay 440, 60
 	Sleep 200
 	__Mags:= % LoadData()
 	lastFeedTime:= []
@@ -26,15 +30,27 @@ SendMode Event
 					previousItemCount+= item.count
 				else{
 					isDoneFeeding[i]:= false
-					Buy(item.name)
-					hungerTime:= 220
+					if (debug){
+						msg:= % "Buy " item.name
+						WriteText(msg)
+						hungerTime:= __Mags.Length() * 5
+					}
+					else{
+						Buy(item.name)
+						hungerTime:= 220
+					}
 					waitTime:= lastFeedTime[i] + (hungerTime * 1000) - A_TickCount
 					if (waitTime > 0)
 						Sleep % waitTime
 					isFirstFeedOfSession[i]:= false
 					lastFeedTime[i]:= A_TickCount
 					mag.feedCount++
-					Feed(i)
+					if (debug){
+						msg:= % "Feed " mag.name
+						WriteText(msg)
+					}
+					else
+						Feed(i)
 					break
 				}
 				j++
@@ -73,7 +89,7 @@ SaveData(mags){
 		output:= % output "    ""items"": [`n"
 		Loop % mag.items.Length(){
 			item:= mag.items[A_Index]
-			output:= % output "      `{""name"": """ item.name """, ""count"": """ item.count """`}"
+			output:= % output "      `{""name"": """ item.name """, ""count"": " item.count "`}"
 			if (A_Index < mag.items.Length())
 				output:= % output ","
 			output:= % output "`n"
@@ -87,7 +103,6 @@ SaveData(mags){
 	output:= % output "`]"
 
 	FileDelete, mags.json
-	;dataString:= JSON.Dump(data, ,2)
 	FileAppend, %output%, mags.json
 }
 Buy(itemName){
