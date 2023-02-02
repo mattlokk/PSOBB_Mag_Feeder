@@ -1,13 +1,11 @@
-# PSOBB_Scripts
-
-**multi_mag_feeder**
+# PSOBB_Mag_Feeder
 
 **installation**
 
 - download [latest release](https://github.com/mattlokk/PSOBB_Scripts/releases/tag/v0.1)
-- extract contents of .zip into a new folder
+- extract contents of .zip
 - make changes to mags.json
-- run multi_mag_feeder.exe
+- run psobb_mag_feeder.exe
 
 **usage**
 
@@ -36,18 +34,18 @@ ctrl-E to exit the application
     "name": "mag1",
     "feedCount": "0",
     "items": [
-      {"name": "monofluid", "count": "10"},
-      {"name": "difluid", "count": "20"},
-      {"name": "trifluid", "count": "30"}
+      {"name": "monofluid", "count": 10},
+      {"name": "difluid", "count": 20},
+      {"name": "trifluid", "count": 30}
     ]
   },
   {
     "name": "mag2",
     "feedCount": "0",
     "items": [
-      {"name": "antidote", "count": "3"},
-      {"name": "antiparalysis", "count": "2"},
-      {"name": "sol atomizer", "count": "1"}
+      {"name": "antidote", "count": 3},
+      {"name": "antiparalysis", "count": 2},
+      {"name": "sol atomizer", "count": 1}
     ]
   }
 ]
