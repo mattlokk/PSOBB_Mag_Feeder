@@ -1,0 +1,16 @@
+[
+  {
+    "name": "sato pt 2",
+    "feedCount": "0",
+    "items": [
+      {"name": "monofluid", "count": 29},
+      {"name": "monomate", "count": 146},
+      {"name": "dimate", "count": 67}
+    ],
+	"_description": "after finishing pt 1. start this script with a Sato mag with 5|11|45|39. Will finish with 5|100|45|50 200 IQ and 120 Synchro.",
+	"_usage_instructions":"rename this file to mags.json and run the .exe in the same directory.",
+	"_total_cost":"91050",,
+	"_total_feeds":"243",
+	"_total_feed_hours":"14.85"
+  }
+]
