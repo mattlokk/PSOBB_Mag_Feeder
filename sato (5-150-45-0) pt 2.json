@@ -3,20 +3,12 @@
     "name": "sato",
     "feedCount": "0",
     "items": [
-      {"name": "monomate", "count": 5},
-      {"name": "antidote", "count": 11},
-      {"name": "antiparalysis", "count": 32},
-      {"name": "sol atomizer", "count": 1},
-      {"name": "monomate", "count": 41},
-      {"name": "antiparalysis", "count": 17},
-      {"name": "moon atomizer", "count": 54},
-      {"name": "antiparalysis", "count": 7},
-      {"name": "antidote", "count": 10}
+      {"name": "monomate", "count": 175},
+      {"name": "dimate", "count": 67}
     ],
-	"_description": "Do this on a GBKOW RA. Will produce a lvl 99 mag with 5 DEF, 11 POW, 44 DEX, and 39 MIND. Hand it to a VBRW Female FO and feed it 3 more antidote. Will evolve into lvl 100 Sato with stats 5|11|45|39. Total cost is ~103k. Total time is ~11 hrs.",
-	"_usage_instructions":"rename this file to mags.json and run the .exe in the same directory.",
-	"_total_cost":"102840",,
-	"_total_feeds":"179",
-	"_total_feed_hours":"10.94"
+	"_description": "start with a lvl 100 sato 5|50|45|0.",
+	"_total_cost":"86550",,
+	"_total_feeds":"242",
+	"_total_feed_hours":"14.79"
   }
 ]

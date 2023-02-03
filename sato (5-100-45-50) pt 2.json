@@ -1,0 +1,15 @@
+[
+  {
+    "name": "sato 5|100|45|50 pt 2",
+    "feedCount": "0",
+    "items": [
+      {"name": "monofluid", "count": 29},
+      {"name": "monomate", "count": 146},
+      {"name": "dimate", "count": 67},
+    ],
+	"_description": "Start with lvl 100 Sato 5|11|45|39",
+	"_total_cost":"51120",
+	"_total_feeds":"223",
+	"_total_feed_hours":"13.63"
+  }
+]

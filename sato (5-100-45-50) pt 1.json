@@ -1,22 +1,19 @@
 [
   {
-    "name": "sato",
+    "name": "sato 5|100|45|50 pt 1",
     "feedCount": "0",
     "items": [
-      {"name": "antidote", "count": 46},
-      {"name": "antiparalysis", "count": 25},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 3},
-      {"name": "monomate", "count": 114}
+      {"name": "monomate", "count": 5},
+      {"name": "antidote", "count": 11},
+      {"name": "antiparalysis", "count": 32},
+      {"name": "sol atomizer", "count": 1},
+      {"name": "monomate", "count": 41},
+      {"name": "antiparalysis", "count": 17},
+      {"name": "moon atomizer", "count": 54},
+      {"name": "antiparalysis", "count": 7},
+      {"name": "antidote", "count": 10}
     ],
-	"_description": "Do this on a GBKOW RA. Will produce a lvl 99 mag with 5 DEF, 49 POW, 45 DEX, and 0 MIND. Hand it to a VBRW Female FO and feed it 3 more monomates. Will evolve into lvl 100 Sato with stats 5|50|45|0.",
-	"_usage_instructions":"rename this file to mags.json and run the .exe in the same directory.",
+	"_description": "Do this on a GBKOW RA. Will produce a lvl 99 mag with 5 DEF, 11 POW, 44 DEX, and 39 MIND. Hand it to a VBRW Female FO and feed it 3 more antidote. Will evolve into lvl 100 Sato with stats 5|11|45|39.",
 	"_total_cost":"51120",
 	"_total_feeds":"223",
 	"_total_feed_hours":"13.63"
