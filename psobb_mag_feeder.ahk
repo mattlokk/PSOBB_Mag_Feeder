@@ -13,13 +13,14 @@ SendMode Event
 	if (debug)
 		SetKeyDelay 40, 60
 	else
-		SetKeyDelay 440, 60
+		SetKeyDelay 190, 60
 	Sleep 200
 	__Mags:= % LoadData()
 	lastFeedTime:= []
 	While true{
 		isDoneFeeding:= []
-		Loop % __Mags.Length(){
+		magCount:= __Mags.Length()
+		Loop % magCount{
 			i:= A_Index
 			mag:= __Mags[i]
 			isDoneFeeding[i]:= true
@@ -50,7 +51,7 @@ SendMode Event
 						WriteText(msg)
 					}
 					else
-						Feed(i)
+						Feed(i, magCount)
 					break
 				}
 				j++
@@ -149,12 +150,18 @@ BuyItem(dir, steps){
 	Send {Backspace}
 	Sleep 500
 }
-Feed(index){
+Feed(index, magCount){
+	dir:= "Down"
 	magpos:= index - 1
+	if (magpos > (magCount/2)){
+		dir:= "Up"
+		magpos:= magCount - magpos
+	}
+
 	Loop 3{
 		Send {F4}
 		Loop % magpos{
-			Send {Down}
+			Send {%dir%}
 		}
 		Send {Enter}
 		Send {Enter}
