@@ -3,10 +3,19 @@
     "name": "sato",
     "feedCount": "0",
     "items": [
+      {"name": "sol atomizer", "count": 5},
+      {"name": "antidote", "count": 5},
+      {"name": "sol atomizer", "count": 5},
+      {"name": "antidote", "count": 5},
+      {"name": "sol atomizer", "count": 5},
+      {"name": "antidote", "count": 5},
+      {"name": "sol atomizer", "count": 5},
+      {"name": "antidote", "count": 3},
+      {"name": "monomate", "count": 114},
       {"name": "monomate", "count": 175},
       {"name": "dimate", "count": 67}
     ],
-	"_description": "start with a lvl 100 sato 5|50|45|0.",
+	"_description": "VBRW Female FO - start with a lvl 50 mag 5|7|38|0",
 	"_total_cost":"86550",,
 	"_total_feeds":"242",
 	"_total_feed_hours":"14.79"

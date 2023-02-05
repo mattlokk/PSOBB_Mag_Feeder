@@ -4,20 +4,11 @@
     "feedCount": "0",
     "items": [
       {"name": "antidote", "count": 46},
-      {"name": "antiparalysis", "count": 25},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 5},
-      {"name": "sol atomizer", "count": 5},
-      {"name": "antidote", "count": 3},
-      {"name": "monomate", "count": 114}
+      {"name": "antiparalysis", "count": 25}
     ],
-	"_description": "Do this on a GBKOW RA. Will produce a lvl 99 mag with 5 DEF, 49 POW, 49 DEX, and 0 MIND. Hand it to a VBRW Female FO and feed it 3 more monomates. Will evolve into lvl 100 Sato with stats 5|50|45|0.",
-	"_total_cost":"51270",,
-	"_total_feeds":"224",
-	"_total_feed_hours":"~13.69 hrs"
+	"_description": "Do this on a GBKOW RA. Will produce a lvl 50 mag with 5 DEF, 7 POW, 38 DEX, and 0 MIND",
+	"_total_cost":"720",,
+	"_total_feeds":"4",
+	"_total_feed_hours":"~0.25 hrs"
   }
 ]
